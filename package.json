@@ -1,0 +1,25 @@
+{
+  "name": "bike",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bike.js",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.13.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Leox46/bike.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Leox46/bike/issues"
+  },
+  "homepage": "https://github.com/Leox46/bike#readme"
+}
