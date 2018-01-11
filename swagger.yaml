@@ -1,0 +1,112 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: "Bikes"
+  description: Semplice API che permette di inserire, modificare e eliminare Bikes.
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: Swagger API Team
+    email: foo@example.com
+    url: http://madskristensen.net
+  license:
+    name: MIT
+    url: http://github.com/gruntjs/grunt/blob/master/LICENSE-MIT
+host: bikebaseapp.herokuapp.com
+basePath: /api/v1
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /bikes:
+    get:
+      description: |
+        Ritorna tutti gli bikes.
+      operationId: findBikes
+      responses:
+        200:
+          description: bike response
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Bike'
+    post:
+      description: |
+        Crea un bike.
+      operationId: addBike
+      parameters:
+        - name: bike
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bike'
+      responses:
+        200:
+          description: bike response
+          schema:
+            $ref: '#/definitions/Bike'
+            
+  /bikes/{id}:
+    get:
+      description: |
+        Ritorna l'bike con l'bikeId specificato.
+      operationId: findBikeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+      responses:
+        200:
+          description: bike response
+          schema:
+            $ref: '#/definitions/Bike'
+    delete:
+      description: |
+        Elimina l'Bike con l'bikeId specificato.
+      operationId: deleteBike
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+      responses:
+        204:
+          description: bike deleted
+    put:
+      description: |
+        Modifica l'bike con l'bikeId specificato.
+      operationId: updateBikeById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          type: string
+          x-example: '46'
+        - name: bike
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Bike'
+      responses:
+        200:
+          description: bike response
+          schema:
+            $ref: '#/definitions/Bike'
+definitions:
+  Bike:
+    required:
+      - bikeId
+      - brand
+      - biker
+    properties:
+      bikeId:
+        type: string
+      brand:
+        type: string
+      biker:
+        type: string
